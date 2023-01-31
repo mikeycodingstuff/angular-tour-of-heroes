@@ -23,6 +23,7 @@ export class HeroService {
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
+        tap(_ => this.log('fetched heroes')),
         catchError(this.handleError<Hero[]>('getHeroes', []))
       )
   }
@@ -37,7 +38,7 @@ export class HeroService {
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
-  
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
