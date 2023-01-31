@@ -21,4 +21,8 @@ export class HeroesComponent {
   getHeroes(): void {
     this.heroes = this.heroService.getHeroes();
   }
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
 }
